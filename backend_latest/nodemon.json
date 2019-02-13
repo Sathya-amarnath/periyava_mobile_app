@@ -1,0 +1,7 @@
+{
+    "env": {
+        "MONGO_ATLAS_PW": "Mn_Periyava2019",
+        
+        "JWT_KEY": "secret1234"
+    }
+}

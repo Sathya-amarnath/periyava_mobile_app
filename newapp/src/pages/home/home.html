@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-navbar text-center>
+    <ion-title>
+      Periyava Saranam
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+<h3><i><b>MN MAHAPERIYAVA SATSANG</b></i></h3>
+
+<img src="../../assets/imgs/mahaperiyava.jpg">
+<br>
+<br>
+
+<h3><i><b>Insert your credentials to Log In</b></i></h3>
+
+<form [formGroup]="formgroup_login" (ngSubmit)="onsubmit(formgroup_login.value)">
+
+  <ion-item>
+    <ion-label stacked>Email ID:</ion-label>
+    <ion-input type="email" formControlName="emailid" #ema_login [(ngModel)]="user_login.email"></ion-input>
+  </ion-item>
+
+  <ion-item class="error-message" *ngIf="!formgroup_login.controls.emailid.valid && formgroup_login.controls.emailid.touched">
+   
+    <p class="p1"> Please enter valid email.</p>
+   
+  </ion-item>
+
+
+  <ion-item>
+    
+    <ion-label stacked>Password:</ion-label>
+    <ion-input type="password" formControlName="pass" #pas_login></ion-input>
+  </ion-item>
+
+  <ion-item class="error-message" *ngIf="!formgroup_login.controls.pass.valid && formgroup_login.controls.pass.touched">
+ 
+    <p class="p1"> Please enter the password. 8-12 chars</p>
+    <p class="p1">atleast 1 Uppercase</p><p class="p1"> 1 lowercase, 1 digit </p><p class="p1">and any of the special charecters.</p>
+  
+  </ion-item>
+
+  <button ion-button color="orange" [disabled]="!formgroup_login.valid" type="submit" class="btncls">LOGIN</button>
+
+
+  <button ion-button  (click)="goToSignup()" class="btncls">
+      SIGN UP
+    </button>
+    <br>
+    <br>
+    <strong (click)="passwordreset()">Forgot Password??</strong>
+</form>
+
+</ion-content>

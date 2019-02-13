@@ -1,0 +1,62 @@
+<!--
+  Generated template for the CountPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+Date, Dropdown, chant count submit button view summary
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>count</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding text-center>
+    <form [formGroup]="formgroup_count" (ngSubmit)="onSubmit_count(formgroup_count.value)">
+  <ion-list>
+      <ion-item>
+          <ion-label floating>Date</ion-label>
+          <ion-datetime displayFormat="MM-DD-YYYY" picker-format="MM-DD-YYYY" formControlName="date" min={{start_date}} max={{myDate}} value="start_date" [(ngModel)]="countform.date_slokam"></ion-datetime>
+        </ion-item>
+        <ion-item class="error-message" 
+        *ngIf="!formgroup_count.controls.date.valid && formgroup_count.controls.date.touched">
+              
+          <p class="p1">  Please enter the date.</p>
+              
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Sloka</ion-label>
+            <ion-select formControlName="sloka" [(ngModel)]="countform.slokam"><ion-option *ngFor="let category of categories">{{category.name}}</ion-option>
+              
+            </ion-select>
+        </ion-item>
+        <ion-item class="error-message" 
+        *ngIf="!formgroup_count.controls.sloka.valid && formgroup_count.controls.sloka.touched">
+              
+          <p class="p1">  Please select the sloka.</p>
+              
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Chant Count</ion-label>
+          <ion-input type="number" formControlName="sloka_count" min="0" [(ngModel)]="countform.count_slokam"></ion-input> 
+        </ion-item>
+        <ion-item class="error-message" 
+        *ngIf="!formgroup_count.controls.sloka_count.valid && formgroup_count.controls.sloka_count.touched">
+              
+          <p class="p1">  Please enter the sloka count. </p>
+          <p class="p1">Should be positive.</p>    
+        </ion-item>
+
+
+
+        <button ion-button color="orange" type="submit" class="login" [disabled]="!formgroup_count.valid">SUBMIT</button>
+        
+  </ion-list>
+  </form>
+  
+</ion-content>
